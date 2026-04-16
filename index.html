@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- google fomt -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="py-2 px-2 lg:py-16 lg:px-60  bg-[#F1F2F4] ">
+    <h1 class="lg:text-4xl lg:py-5 text-2xl py-2 font-bold text-center">Job Application Tracker</h1>
+
+    <nav class="grid grid-cols-1 lg:grid-cols-3 gap-4 py-5 place-content-between">
+      <div class="right p-3 flex flex-col items-center bg-white rounded-lg text-[14px]">
+        Total<br />
+        <h1 id="total-number" class="font-bold text-3xl text-[#002b70]">0</h1>
+      </div>
+      <div id="" class="middle p-3 flex flex-col items-center bg-white rounded-lg">
+        Interview<br />
+        <h1 id="interview-number" class="font-bold text-3xl text-[#10b981]">0</h1>
+      </div>
+      <div class="left p-3 flex flex-col items-center bg-white rounded-lg">
+        Rejected<br />
+        <h1 id="rejected-number" class="font-bold text-3xl text-[#EF4444]">0</h1>
+      </div>
+    </nav>
+    <div class="border border-solid border-[#adafb1] "></div>
+
+    <nav class="">
+      <div class="grid grid-cols-1   bg-[#fffff] rounded-md p-2">
+        <span>Available Jobs</span>
+
+        <div class="grid grid-cols-2 justify-self-end px-5">
+          <div id="job-count">0</div>
+          <div>jobs</div>
+        </div>
+
+<div class="flex flex-col aaaaa row-span-2">
+
+        <div class="grid grid-cols-1 gap-2 lg:grid-cols-3 ">
+          <button onclick="switchTab('all')" id="tab-all" class="bg-amber-50 py-1 mx-1 px-5 rounded-md w-full lg:w-auto">All</button>
+          <button onclick="switchTab('interview')" id="tab-interview" class="bg-amber-50 py-1 mx-1 px-5 rounded-md">
+            Interview
+          </button>
+          <button onclick="switchTab('rejected')" id="tab-rejected" class="bg-amber-50 py-1 mx-1 px-5 rounded-md">
+            Rejected
+          </button>
+        </div>
+
+</div>
+
+      </div>
+
+
+
+
+
+      
+
+
+
+      <!-- div of the one sample card -->
+      <div id="demo-card" class="hidden card bg-white rounded-xl p-5 mb-2">
+          <div class="wrapper-div flex justify-between">
+
+          <div class="delete-div">
+        <h1 class="font-bold text-2xl">Mobile First corp</h1>
+        <h3 class=" text-[#64748B]">React Native Developer</h3>
+       </div>
+
+       <div class="del-button"><button class="bg-[#F1F2F4] border-[#64748B] rounded-full p-1"><i class="fa-solid fa-trash-can"></i></button></div>
+       
+      </div>
+      
+
+
+       
+        <span class="location">Remote •</span>
+        <span class="location">Full-time •</span>
+        <span class="location">$130,000-175,000</span>
+        <div>
+          <button class="bg-[#EEF4FF] p-2 rounded-x mt-2">NOT APPLIED</button>
+          <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+        </div>
+        <div class="two-button my-2">
+          <button class="interview p-2 border rounded-sm bg-transparent text-green-500">INTERVIEW</button>
+          <button class="rejected border rounded-sm p-2 bg-transparent text-red-500">REJECTED</button>
+        </div>
+        
+
+
+       </div>
+
+
+
+       <!-- job cards -->
+       <div id="jobs-container" class="flex flex-col gap-4">
+        <section id="all-container" class="hidden"></section>
+        <section id="interview-container" class="hidden"></section>
+        <section id="rejected-container" class="hidden"></section>
+
+
+
+       </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div id="job-contenar"
+        class=" hidden grid grid-cols-1 px-10 py-10 pb-20 bg-[#FFFFFF] rounded-md place-items-center"
+      >
+        <img class="scale-100" src="./jobs.png" alt="Document Photo" />
+
+        <span
+          ><h1 class="grid py-5 text-2xl px-0 place-items-center">
+            No Jobs Available
+          </h1>
+          <p>Check back soon for new job opportunities</p></span
+        >
+      </div>
+
+      <!-- </div> -->
+    </nav>
+
+    <!-- </nav> -->
+     <script src="./index.js"></script>
+  </body>
+</html>
