@@ -6,8 +6,9 @@ const jobs = [
     location: "Los Angeles, CA",
     type: "Part-time",
     salary: "$80,000-120,000",
-    description: "Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.",
-    status: "all"
+    description:
+      "Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.",
+    status: "all",
   },
   {
     id: 2,
@@ -16,8 +17,9 @@ const jobs = [
     location: "Remote",
     type: "Full-time",
     salary: "$130,000-175,000",
-    description: "Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.",
-    status: "all"
+    description:
+      "Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.",
+    status: "all",
   },
   {
     id: 3,
@@ -26,8 +28,9 @@ const jobs = [
     location: "Seattle",
     type: "Full-time",
     salary: "$140,000-190,000",
-    description: "Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.",
-    status: "all"
+    description:
+      "Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.",
+    status: "all",
   },
   {
     id: 4,
@@ -36,8 +39,9 @@ const jobs = [
     location: "Austin, TX ",
     type: "Full-time",
     salary: "$110,000 - $150,000",
-    description: "Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.",
-    status: "all"
+    description:
+      "Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.",
+    status: "all",
   },
   {
     id: 5,
@@ -46,8 +50,9 @@ const jobs = [
     location: "New York, NY •  • ",
     type: "Full-time",
     salary: "$130,000 - $170,00",
-    description: "Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.",
-    status: "all"
+    description:
+      "Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.",
+    status: "all",
   },
   {
     id: 6,
@@ -56,8 +61,9 @@ const jobs = [
     location: "Remote",
     type: "Full-time",
     salary: "$120,000 - $160,000",
-    description: "Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.",
-    status: "all"
+    description:
+      "Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.",
+    status: "all",
   },
   {
     id: 7,
@@ -66,8 +72,9 @@ const jobs = [
     location: "San Francisco, CA",
     type: "Full-time",
     salary: "$130,000 - $175,000",
-    description: "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.",
-    status: "all"
+    description:
+      "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.",
+    status: "all",
   },
   {
     id: 8,
@@ -76,88 +83,73 @@ const jobs = [
     location: "Boston, MA",
     type: "Full-time",
     salary: "$125,000 - $165,000",
-    description: "Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.",
-    status: "all"
-  }
-
-
-  
+    description:
+      "Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking.",
+    status: "all",
+  },
 ];
 
+let currentTab = "all";
+const tabActive = ["bg-blue-500", "text-white", "border-blue-100"];
+const tabInactive = ["bg-amber-50", "text-black", "border-white"];
 
-let currentTab="all";
-const tabActive=["bg-blue-500","text-white","border-blue-100"];
-const tabInactive=["bg-amber-50","text-black","border-white"];
+const allContainer = document.getElementById("all-container");
+const interviewContainer = document.getElementById("interview-container");
+const rejectedContainer = document.getElementById("rejected-container");
 
-const allContainer=document.getElementById("all-container");
-const interviewContainer=document.getElementById("interview-container");
-const rejectedContainer=document.getElementById("rejected-container")
-
-function switchTab(tab){
-    console.log(tab);
-    const tabs=["all", "interview","rejected"];
-    for(const t of tabs){
-        const tabName=document.getElementById("tab-"+t);
-        if(t===tab){
-          
-            tabName.classList.remove(...tabInactive);
-            tabName.classList.add(...tabActive);
-        }
-        else{
-            tabName.classList.remove(...tabActive);
-            tabName.classList.add(...tabInactive);
-        }
-      }
-        const pages=[allContainer,interviewContainer,rejectedContainer];
-        for (const section of pages){
-          section.classList.add("hidden");
-        }
-
-        
-      if (tab==="all") {
-        allContainer.classList.remove("hidden");
-      } 
-
-      else if(tab==="interview"){
-        interviewContainer.classList.remove("hidden");
-      }
-      else{
-        rejectedContainer.classList.remove("hidden");
-      }
+function switchTab(tab) {
+  console.log(tab);
+  const tabs = ["all", "interview", "rejected"];
+  for (const t of tabs) {
+    const tabName = document.getElementById("tab-" + t);
+    if (t === tab) {
+      tabName.classList.remove(...tabInactive);
+      tabName.classList.add(...tabActive);
+    } else {
+      tabName.classList.remove(...tabActive);
+      tabName.classList.add(...tabInactive);
     }
+  }
+  const pages = [allContainer, interviewContainer, rejectedContainer];
+  for (const section of pages) {
+    section.classList.add("hidden");
+  }
 
+  if (tab === "all") {
+    allContainer.classList.remove("hidden");
+  } else if (tab === "interview") {
+    interviewContainer.classList.remove("hidden");
+  } else {
+    rejectedContainer.classList.remove("hidden");
+  }
+}
 
+switchTab(currentTab);
 
-   switchTab(currentTab);
-
-
-
-
-
-
-   function renderJobs() {
+function renderJobs() {
   allContainer.innerHTML = "";
   interviewContainer.innerHTML = "";
   rejectedContainer.innerHTML = "";
   function updateJobCount() {
-  document.getElementById("job-count").innerText = jobs.length;
-}
+    document.getElementById("job-count").innerText = jobs.length;
+  }
 
-  jobs.forEach(job => {
+  jobs.forEach((job) => {
     const card = document.getElementById("demo-card").cloneNode(true);
     card.classList.remove("hidden");
 
     card.querySelector("h1").innerText = job.company;
     card.querySelector("h3").innerText = job.position;
 
-
-     const deleteBtn = card.querySelector(".del-button button");
+    const deleteBtn = card.querySelector(".del-button button");
 
     deleteBtn.onclick = () => {
-      jobs.splice(jobs.findIndex(j => j.id === job.id), 1);
+      jobs.splice(
+        jobs.findIndex((j) => j.id === job.id),
+        1,
+      );
       renderJobs();
     };
-
 
     card.querySelector(".location").innerText =
       `${job.location} • ${job.type} • ${job.salary}`;
@@ -180,36 +172,23 @@ function switchTab(tab){
       rejectedContainer.appendChild(card);
     }
   });
-updateJobCount();
+  updateJobCount();
   updateDashboard();
 }
 
-
-
 function updateStatus(id, newStatus) {
-  const job = jobs.find(j => j.id === id);
+  const job = jobs.find((j) => j.id === id);
   job.status = newStatus;
-  renderJobs()
-  ;
+  renderJobs();
 }
 
-
 function updateDashboard() {
-  
   document.getElementById("total-number").innerText = jobs.length;
 
-  const interviewCount = jobs.filter(j => j.status === "interview").length;
-  const rejectedCount = jobs.filter(j => j.status === "rejected").length;
+  const interviewCount = jobs.filter((j) => j.status === "interview").length;
+  const rejectedCount = jobs.filter((j) => j.status === "rejected").length;
 
   document.getElementById("interview-number").innerText = interviewCount;
   document.getElementById("rejected-number").innerText = rejectedCount;
 }
 renderJobs();
-
-
-   
-
-
-
-
-
